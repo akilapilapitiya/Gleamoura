@@ -1,7 +1,26 @@
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router";
+import RootLayout from "./layout/RootLayout";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import NotFound from "./pages/NotFound";
 const App = () => {
-  return (
-    <div>App</div>
-  )
-}
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />} />
+          <Route path="shop" element={<Shop />} />
 
-export default App
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    )
+  );
+
+  return <RouterProvider router={router} />;
+};
+
+export default App;
