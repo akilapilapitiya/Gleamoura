@@ -57,6 +57,23 @@ const products = [
     features: ["Hospital-grade UV-C", "3-minute cycle", "Compact design", "Safety certified"],
     stock: 15,
   },
+  {
+    id: 1,
+    name: "Cleaning Brush Set",
+    price: 5000.00,
+    originalPrice: 5000.00,
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
+    category: "Electronics",
+    rating: 5.0,
+    reviewCount: 20,
+    isOnSale: false,
+    isBestseller: false,
+    isNew: false,
+    description: "Professional-grade UV-C sanitization device with 99.9% germ elimination rate",
+    features: ["Hospital-grade UV-C", "3-minute cycle", "Compact design", "Safety certified"],
+    stock: 15,
+  },
+
   
 ];
 
