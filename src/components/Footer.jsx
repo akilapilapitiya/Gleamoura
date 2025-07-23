@@ -24,10 +24,9 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: <Facebook />, href: "#", color: "#1976d2" },
-    { icon: <Instagram />, href: "#", color: "#7b1fa2" },
-    { icon: <Twitter />, href: "#", color: "#00796b" },
-    { icon: <Email />, href: "mailto:support@gleamoura.com", color: "#1976d2" },
+    { icon: <Facebook />, href: "https://www.facebook.com/share/1afxf2rzTs/", color: "#1976d2" },
+    { icon: <Instagram />, href: "https://www.instagram.com/gleamoura_360?igsh=Mjl2ODgzYnZnNDJh", color: "#7b1fa2" },
+    { icon: <Email />, href: "mailto:gleamoura360@gmail.com", color: "#1976d2" },
   ];
 
   const navLinks = ["Home", "Shop", "About", "Contact"];
