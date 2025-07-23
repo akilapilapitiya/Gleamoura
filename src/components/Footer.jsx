@@ -8,7 +8,13 @@ import {
   Container,
   Divider,
 } from "@mui/material";
-import { Facebook, Instagram, Twitter, Email, ArrowUpward } from "@mui/icons-material";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Email,
+  ArrowUpward,
+} from "@mui/icons-material";
 import { motion } from "framer-motion";
 import namedLogo from "../assets/named-logo.png";
 
@@ -18,10 +24,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: <Facebook />, href: "#", color: "#1877F2" },
-    { icon: <Instagram />, href: "#", color: "#E4405F" },
-    { icon: <Twitter />, href: "#", color: "#1DA1F2" },
-    { icon: <Email />, href: "mailto:support@gleamoura.com", color: "#00BCD4" },
+    { icon: <Facebook />, href: "#", color: "#1976d2" },
+    { icon: <Instagram />, href: "#", color: "#7b1fa2" },
+    { icon: <Twitter />, href: "#", color: "#00796b" },
+    { icon: <Email />, href: "mailto:support@gleamoura.com", color: "#1976d2" },
   ];
 
   const navLinks = ["Home", "Shop", "About", "Contact"];
@@ -31,24 +37,27 @@ const Footer = () => {
       component="footer"
       sx={{
         position: "relative",
-        background: "linear-gradient(135deg, #0F0F23, #1A1A2E, #16213E)",
-        color: "#F3F4F6",
+        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 35%, #0f1419 100%)",
+        color: "#F8FAFF",
         py: { xs: 6, md: 8 },
-        mt: 10,
         overflow: "hidden",
+        // Remove the margin that causes white strip
+        mt: 0,
+        // Ensure no gaps
+        borderTop: "1px solid rgba(25, 118, 210, 0.1)",
       }}
     >
-      {/* Background Effects */}
+      {/* Background Effects - Updated colors */}
       <Box
         sx={{
           position: "absolute",
-          width: 400,
-          height: 400,
-          bgcolor: "#00BCD4",
-          filter: "blur(150px)",
+          width: 500,
+          height: 500,
+          bgcolor: "#1976d2",
+          filter: "blur(200px)",
           borderRadius: "50%",
           top: -200,
-          left: -150,
+          left: -200,
           zIndex: 1,
           opacity: 0.08,
         }}
@@ -56,19 +65,33 @@ const Footer = () => {
       <Box
         sx={{
           position: "absolute",
-          width: 300,
-          height: 300,
-          bgcolor: "#B388FF",
-          filter: "blur(120px)",
+          width: 400,
+          height: 400,
+          bgcolor: "#7b1fa2",
+          filter: "blur(150px)",
           borderRadius: "50%",
           bottom: -150,
-          right: -100,
+          right: -150,
           zIndex: 1,
           opacity: 0.06,
         }}
       />
+      <Box
+        sx={{
+          position: "absolute",
+          width: 300,
+          height: 300,
+          bgcolor: "#00796b",
+          filter: "blur(120px)",
+          borderRadius: "50%",
+          top: "40%",
+          right: "20%",
+          zIndex: 1,
+          opacity: 0.04,
+        }}
+      />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
+      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 2 }}>
         {/* Main Footer Content */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -80,7 +103,7 @@ const Footer = () => {
             direction={{ xs: "column", lg: "row" }}
             justifyContent="space-between"
             alignItems={{ xs: "center", lg: "flex-start" }}
-            spacing={{ xs: 4, lg: 6 }}
+            spacing={{ xs: 6, lg: 8 }}
             textAlign={{ xs: "center", lg: "left" }}
           >
             {/* Logo & Brand Section */}
@@ -90,27 +113,42 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <Box sx={{ maxWidth: { xs: "100%", lg: 300 } }}>
+              <Box sx={{ maxWidth: { xs: "100%", lg: 320 } }}>
                 <Box
                   component="img"
                   src={namedLogo}
                   alt="Gleamoura Logo"
-                  sx={{ 
+                  sx={{
                     height: { xs: 80, md: 100 },
-                    mb: 2,
-                    filter: "drop-shadow(0 4px 12px rgba(0, 188, 212, 0.3))",
+                    mb: 3,
+                    filter: "drop-shadow(0 4px 16px rgba(25, 118, 210, 0.3)) brightness(1.1)",
                   }}
                 />
                 <Typography
-                  variant="body1"
+                  variant="h6"
+                  fontWeight={600}
                   sx={{
-                    color: "rgba(255, 255, 255, 0.7)",
-                    lineHeight: 1.6,
-                    maxWidth: 280,
-                    mx: { xs: "auto", lg: 0 },
+                    background: "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    mb: 2,
                   }}
                 >
-                  Revolutionary cleaning technology powered by simplicity for the future of hygiene.
+                  The Future of Cleaning
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "rgba(248, 250, 255, 0.8)",
+                    lineHeight: 1.7,
+                    maxWidth: 300,
+                    mx: { xs: "auto", lg: 0 },
+                    fontSize: "1rem",
+                  }}
+                >
+                  Revolutionary UV-powered cleaning technology that brings
+                  hospital-grade hygiene to your everyday life. Simple,
+                  effective, and safe.
                 </Typography>
               </Box>
             </motion.div>
@@ -118,7 +156,7 @@ const Footer = () => {
             {/* Navigation & Social Section */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
-              spacing={{ xs: 4, sm: 8 }}
+              spacing={{ xs: 6, sm: 10 }}
               alignItems={{ xs: "center", sm: "flex-start" }}
             >
               {/* Navigation Links */}
@@ -132,15 +170,16 @@ const Footer = () => {
                   variant="h6"
                   fontWeight={700}
                   sx={{
-                    background: "linear-gradient(90deg, #00BCD4, #B388FF)",
+                    background: "linear-gradient(90deg, #1976d2, #7b1fa2)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
-                    mb: 2,
+                    mb: 3,
+                    fontSize: "1.2rem",
                   }}
                 >
                   Quick Links
                 </Typography>
-                <Stack spacing={1}>
+                <Stack spacing={2}>
                   {navLinks.map((text, index) => (
                     <motion.div
                       key={text}
@@ -148,29 +187,32 @@ const Footer = () => {
                       whileInView={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
                       viewport={{ once: true }}
-                      whileHover={{ x: 5 }}
+                      whileHover={{ x: 8 }}
                     >
                       <Link
                         href={`/${text.toLowerCase()}`}
                         underline="none"
                         sx={{
-                          color: "rgba(255, 255, 255, 0.8)",
+                          color: "rgba(248, 250, 255, 0.9)",
                           fontWeight: 500,
+                          fontSize: "1rem",
                           position: "relative",
                           transition: "all 0.3s ease",
+                          display: "inline-block",
                           "&:hover": {
-                            color: "#00BCD4",
-                            textShadow: "0 0 8px rgba(0, 188, 212, 0.5)",
+                            color: "#1976d2",
+                            textShadow: "0 0 8px rgba(25, 118, 210, 0.5)",
                           },
                           "&::after": {
                             content: '""',
                             position: "absolute",
                             width: 0,
                             height: 2,
-                            bottom: -2,
+                            bottom: -4,
                             left: 0,
-                            background: "linear-gradient(90deg, #00BCD4, #B388FF)",
+                            background: "linear-gradient(90deg, #1976d2, #7b1fa2)",
                             transition: "width 0.3s ease",
+                            borderRadius: 1,
                           },
                           "&:hover::after": {
                             width: "100%",
@@ -195,49 +237,57 @@ const Footer = () => {
                   variant="h6"
                   fontWeight={700}
                   sx={{
-                    background: "linear-gradient(90deg, #00BCD4, #B388FF)",
+                    background: "linear-gradient(90deg, #7b1fa2, #00796b)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
-                    mb: 2,
+                    mb: 3,
+                    fontSize: "1.2rem",
                   }}
                 >
                   Connect With Us
                 </Typography>
-                <Stack direction="row" spacing={1} justifyContent={{ xs: "center", sm: "flex-start" }}>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent={{ xs: "center", sm: "flex-start" }}
+                  sx={{ mb: 2 }}
+                >
                   {socialLinks.map((social, index) => (
                     <motion.div
                       key={index}
                       initial={{ scale: 0, rotate: -180 }}
                       whileInView={{ scale: 1, rotate: 0 }}
-                      transition={{ 
-                        duration: 0.5, 
+                      transition={{
+                        duration: 0.5,
                         delay: 0.5 + index * 0.1,
                         type: "spring",
-                        damping: 15
+                        damping: 15,
                       }}
                       viewport={{ once: true }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        rotate: 5,
-                        transition: { type: "spring", damping: 10 }
+                      whileHover={{
+                        scale: 1.15,
+                        y: -3,
+                        transition: { type: "spring", damping: 10 },
                       }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <IconButton
                         href={social.href}
                         sx={{
-                          background: "rgba(255, 255, 255, 0.05)",
-                          backdropFilter: "blur(10px)",
-                          border: "1px solid rgba(255, 255, 255, 0.1)",
-                          color: "rgba(255, 255, 255, 0.8)",
-                          width: 48,
-                          height: 48,
+                          background: "rgba(248, 250, 255, 0.08)",
+                          backdropFilter: "blur(20px)",
+                          border: "1px solid rgba(25, 118, 210, 0.2)",
+                          color: "rgba(248, 250, 255, 0.9)",
+                          width: 52,
+                          height: 52,
+                          borderRadius: 2,
                           transition: "all 0.3s ease",
                           "&:hover": {
-                            background: `${social.color}20`,
+                            background: `${social.color}15`,
                             color: social.color,
                             border: `1px solid ${social.color}40`,
-                            boxShadow: `0 8px 24px ${social.color}30`,
+                            boxShadow: `0 8px 32px ${social.color}25`,
+                            transform: "translateY(-2px)",
                           },
                         }}
                       >
@@ -246,6 +296,15 @@ const Footer = () => {
                     </motion.div>
                   ))}
                 </Stack>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "rgba(248, 250, 255, 0.7)",
+                    fontSize: "0.9rem",
+                  }}
+                >
+                  Follow us for updates & tips
+                </Typography>
               </motion.div>
             </Stack>
           </Stack>
@@ -260,8 +319,8 @@ const Footer = () => {
         >
           <Divider
             sx={{
-              my: 4,
-              background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)",
+              my: 5,
+              background: "linear-gradient(90deg, transparent, rgba(25, 118, 210, 0.3), rgba(123, 31, 162, 0.3), rgba(0, 121, 107, 0.3), transparent)",
               height: 1,
               border: "none",
             }}
@@ -279,38 +338,68 @@ const Footer = () => {
             direction={{ xs: "column", sm: "row" }}
             justifyContent="space-between"
             alignItems="center"
-            spacing={2}
+            spacing={3}
           >
-            <Typography
-              variant="body2"
-              sx={{
-                color: "rgba(255, 255, 255, 0.6)",
-                textAlign: { xs: "center", sm: "left" },
-              }}
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={{ xs: 1, sm: 4 }}
+              alignItems="center"
             >
-              © {new Date().getFullYear()} Gleamoura. All rights reserved.
-            </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "rgba(248, 250, 255, 0.7)",
+                  textAlign: { xs: "center", sm: "left" },
+                  fontSize: "0.95rem",
+                }}
+              >
+                © {new Date().getFullYear()} Gleamoura. All rights reserved.
+              </Typography>
+              <Stack
+                direction="row"
+                spacing={3}
+                sx={{ fontSize: "0.9rem" }}
+              >
+                {["Privacy Policy", "Terms of Service"].map((text) => (
+                  <Link
+                    key={text}
+                    href="#"
+                    underline="none"
+                    sx={{
+                      color: "rgba(248, 250, 255, 0.6)",
+                      fontSize: "0.85rem",
+                      "&:hover": {
+                        color: "#1976d2",
+                      },
+                    }}
+                  >
+                    {text}
+                  </Link>
+                ))}
+              </Stack>
+            </Stack>
 
             {/* Scroll to Top Button */}
             <motion.div
-              whileHover={{ scale: 1.1, y: -2 }}
+              whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
               <IconButton
                 onClick={scrollToTop}
                 sx={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  color: "rgba(255, 255, 255, 0.8)",
-                  width: 44,
-                  height: 44,
+                  background: "rgba(248, 250, 255, 0.08)",
+                  backdropFilter: "blur(20px)",
+                  border: "1px solid rgba(25, 118, 210, 0.3)",
+                  color: "rgba(248, 250, 255, 0.9)",
+                  width: 48,
+                  height: 48,
+                  borderRadius: 2,
                   transition: "all 0.3s ease",
                   "&:hover": {
-                    background: "rgba(0, 188, 212, 0.2)",
-                    color: "#00BCD4",
-                    border: "1px solid rgba(0, 188, 212, 0.4)",
-                    boxShadow: "0 8px 24px rgba(0, 188, 212, 0.3)",
+                    background: "rgba(25, 118, 210, 0.15)",
+                    color: "#1976d2",
+                    border: "1px solid rgba(25, 118, 210, 0.5)",
+                    boxShadow: "0 8px 32px rgba(25, 118, 210, 0.3)",
                   },
                 }}
               >
@@ -318,6 +407,34 @@ const Footer = () => {
               </IconButton>
             </motion.div>
           </Stack>
+        </motion.div>
+
+        {/* Trust Badge */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          viewport={{ once: true }}
+        >
+          <Box
+            sx={{
+              textAlign: "center",
+              mt: 4,
+              pt: 4,
+              borderTop: "1px solid rgba(25, 118, 210, 0.1)",
+            }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                color: "rgba(248, 250, 255, 0.6)",
+                fontSize: "0.8rem",
+                fontStyle: "italic",
+              }}
+            >
+              🛡️ Trusted by thousands • 🌍 Shipping island-wide • ⚡ 24/7 Support
+            </Typography>
+          </Box>
         </motion.div>
       </Container>
     </Box>

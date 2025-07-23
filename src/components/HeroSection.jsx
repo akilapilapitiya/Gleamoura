@@ -2,7 +2,13 @@ import React from "react";
 import { Box, Typography, Button, Stack, Container, Chip } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
-import { PlayArrow, ShoppingCart, AutoAwesome, Shield, Speed } from "@mui/icons-material";
+import {
+  PlayArrow,
+  ShoppingCart,
+  AutoAwesome,
+  Shield,
+  Speed,
+} from "@mui/icons-material";
 import cleanerImage from "../assets/device-mockup.png";
 
 const HeroSection = () => {
@@ -19,7 +25,7 @@ const HeroSection = () => {
       sx={{
         position: "relative",
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #0F0F23, #1A1A2E, #16213E)",
+        background: "linear-gradient(135deg, #f8faff 0%, #e8f2ff 25%, #dae8ff 50%, #ffffff 100%)",
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
@@ -32,13 +38,13 @@ const HeroSection = () => {
           position: "absolute",
           width: 600,
           height: 600,
-          bgcolor: "#00BCD4",
+          bgcolor: "#e3f2fd",
           filter: "blur(200px)",
           borderRadius: "50%",
           top: -200,
           left: -200,
           zIndex: 1,
-          opacity: 0.12,
+          opacity: 0.4,
         }}
       />
       <Box
@@ -46,13 +52,13 @@ const HeroSection = () => {
           position: "absolute",
           width: 400,
           height: 400,
-          bgcolor: "#B388FF",
+          bgcolor: "#f3e5f5",
           filter: "blur(150px)",
           borderRadius: "50%",
           bottom: -100,
           right: -150,
           zIndex: 1,
-          opacity: 0.08,
+          opacity: 0.3,
         }}
       />
       <Box
@@ -60,15 +66,15 @@ const HeroSection = () => {
           position: "absolute",
           width: 300,
           height: 300,
-          bgcolor: "#4ECDC4",
+          bgcolor: "#e0f2f1",
           filter: "blur(120px)",
           borderRadius: "50%",
           top: "30%",
           right: "10%",
           zIndex: 1,
-          opacity: 0.06,
+          opacity: 0.25,
         }}
-      />     
+      />
       <Container maxWidth="xl" sx={{ zIndex: 2, position: "relative" }}>
         <Stack
           direction={{ xs: "column", lg: "row" }}
@@ -88,9 +94,9 @@ const HeroSection = () => {
                 label="Revolutionary Cleaning Tool"
                 sx={{
                   mb: 3,
-                  bgcolor: "rgba(0, 188, 212, 0.15)",
-                  color: "#00BCD4",
-                  border: "1px solid rgba(0, 188, 212, 0.3)",
+                  bgcolor: "rgba(25, 118, 210, 0.08)",
+                  color: "#1976d2",
+                  border: "1px solid rgba(25, 118, 210, 0.2)",
                   fontWeight: 600,
                   fontSize: "0.9rem",
                   backdropFilter: "blur(10px)",
@@ -103,15 +109,15 @@ const HeroSection = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Typography 
-                variant="h1" 
-                component="h1" 
-                fontWeight={800} 
+              <Typography
+                variant="h1"
+                component="h1"
+                fontWeight={800}
                 gutterBottom
                 sx={{
                   fontSize: { xs: "2.5rem", md: "3.5rem", lg: "4rem" },
                   lineHeight: 1.1,
-                  color: "white",
+                  color: "#1a1a1a",
                   mb: 2,
                 }}
               >
@@ -119,7 +125,8 @@ const HeroSection = () => {
                 <Box
                   component="span"
                   sx={{
-                    background: "linear-gradient(90deg, #00BCD4, #B388FF, #4ECDC4)",
+                    background:
+                      "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     position: "relative",
@@ -130,9 +137,10 @@ const HeroSection = () => {
                       left: 0,
                       right: 0,
                       height: 4,
-                      background: "linear-gradient(90deg, #00BCD4, #B388FF, #4ECDC4)",
+                      background:
+                        "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
                       borderRadius: 2,
-                    }
+                    },
                   }}
                 >
                   Gleamoura
@@ -145,19 +153,26 @@ const HeroSection = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <Typography 
-                variant="h5" 
-                sx={{ 
-                  color: "rgba(255, 255, 255, 0.8)",
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "#546e7a",
                   mb: 4,
                   lineHeight: 1.6,
                   maxWidth: 520,
                   fontSize: { xs: "1.1rem", md: "1.25rem" },
                 }}
               >
-                The smart, sleek, and effective way to disinfect any surface with 
-                <Box component="span" sx={{ color: "#00BCD4", fontWeight: 600 }}> UV Technology</Box>. 
-                Effortless cleaning. Maximum hygiene.
+                The smart, sleek, and effective way to disinfect any surface
+                with
+                <Box
+                  component="span"
+                  sx={{ color: "#1976d2", fontWeight: 600 }}
+                >
+                  {" "}
+                  UV Technology
+                </Box>
+                . Effortless cleaning. Maximum hygiene.
               </Typography>
             </motion.div>
 
@@ -167,17 +182,21 @@ const HeroSection = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <Stack direction="row" spacing={2} sx={{ mb: 4, flexWrap: "wrap", gap: 1 }}>
+              <Stack
+                direction="row"
+                spacing={2}
+                sx={{ mb: 4, flexWrap: "wrap", gap: 1 }}
+              >
                 {features.map((feature, index) => (
                   <motion.div
                     key={index}
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    transition={{ 
-                      duration: 0.5, 
+                    transition={{
+                      duration: 0.5,
                       delay: 0.8 + index * 0.1,
                       type: "spring",
-                      damping: 15
+                      damping: 15,
                     }}
                     whileHover={{ scale: 1.05, y: -2 }}
                   >
@@ -185,14 +204,15 @@ const HeroSection = () => {
                       icon={feature.icon}
                       label={feature.text}
                       sx={{
-                        bgcolor: "rgba(255, 255, 255, 0.05)",
-                        color: "white",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
+                        bgcolor: "rgba(255, 255, 255, 0.8)",
+                        color: "#37474f",
+                        border: "1px solid rgba(25, 118, 210, 0.1)",
                         backdropFilter: "blur(10px)",
                         fontWeight: 600,
                         py: 1,
+                        boxShadow: "0 2px 8px rgba(25, 118, 210, 0.1)",
                         "& .MuiChip-icon": {
-                          color: "#00BCD4",
+                          color: "#1976d2",
                         },
                       }}
                     />
@@ -207,8 +227,8 @@ const HeroSection = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <Stack 
-                direction={{ xs: "column", sm: "row" }} 
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
                 spacing={3}
                 sx={{ alignItems: { xs: "stretch", sm: "center" } }}
               >
@@ -216,24 +236,24 @@ const HeroSection = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Button 
+                  <Button
                     variant="contained"
                     size="large"
                     startIcon={<ShoppingCart />}
                     onClick={() => navigate("/shop")}
                     sx={{
-                      background: "linear-gradient(135deg, #00BCD4, #4ECDC4)",
-                      boxShadow: "0 8px 24px rgba(0, 188, 212, 0.4)",
+                      background: "linear-gradient(135deg, #1976d2, #00796b)",
+                      boxShadow: "0 8px 24px rgba(25, 118, 210, 0.3)",
                       py: 1.5,
                       px: 4,
                       fontSize: "1.1rem",
                       fontWeight: 700,
                       borderRadius: 3,
                       textTransform: "none",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      color: "white",
                       "&:hover": {
-                        background: "linear-gradient(135deg, #4ECDC4, #00BCD4)",
-                        boxShadow: "0 12px 32px rgba(0, 188, 212, 0.6)",
+                        background: "linear-gradient(135deg, #00796b, #1976d2)",
+                        boxShadow: "0 12px 32px rgba(25, 118, 210, 0.4)",
                         transform: "translateY(-2px)",
                       },
                     }}
@@ -241,31 +261,31 @@ const HeroSection = () => {
                     Order Now
                   </Button>
                 </motion.div>
-                
+
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Button 
+                  <Button
                     variant="outlined"
                     size="large"
                     startIcon={<PlayArrow />}
                     sx={{
-                      borderColor: "rgba(255, 255, 255, 0.3)",
-                      color: "white",
+                      borderColor: "rgba(25, 118, 210, 0.4)",
+                      color: "#1976d2",
                       py: 1.5,
                       px: 4,
                       fontSize: "1.1rem",
                       fontWeight: 600,
                       borderRadius: 3,
                       textTransform: "none",
-                      background: "rgba(255, 255, 255, 0.05)",
+                      background: "rgba(255, 255, 255, 0.6)",
                       backdropFilter: "blur(10px)",
                       "&:hover": {
-                        borderColor: "#00BCD4",
-                        background: "rgba(0, 188, 212, 0.1)",
-                        color: "#00BCD4",
-                        boxShadow: "0 8px 24px rgba(0, 188, 212, 0.2)",
+                        borderColor: "#1976d2",
+                        background: "rgba(25, 118, 210, 0.08)",
+                        color: "#1565c0",
+                        boxShadow: "0 8px 24px rgba(25, 118, 210, 0.15)",
                       },
                     }}
                   >
@@ -285,22 +305,34 @@ const HeroSection = () => {
                 variant="caption"
                 sx={{
                   display: "block",
-                  color: "rgba(255, 255, 255, 0.6)",
+                  color: "#78909c",
                   mt: 4,
                   fontStyle: "italic",
                 }}
               >
-                 Free shipping Islandwide • 30-day money-back guarantee • 2-year warranty
+                Free shipping Islandwide • 30-day money-back guarantee • 2-year
+                warranty
               </Typography>
             </motion.div>
           </Box>
 
           {/* Enhanced Image Section */}
-          <Box sx={{ flex: 1, position: "relative", maxWidth: { xs: "100%", lg: 500 } }}>
+          <Box
+            sx={{
+              flex: 1,
+              position: "relative",
+              maxWidth: { xs: "100%", lg: 500 },
+            }}
+          >
             <motion.div
               initial={{ scale: 0.8, opacity: 0, rotateY: 30 }}
               animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-              transition={{ delay: 0.5, duration: 1, type: "spring", damping: 20 }}
+              transition={{
+                delay: 0.5,
+                duration: 1,
+                type: "spring",
+                damping: 20,
+              }}
               style={{ textAlign: "center", position: "relative" }}
             >
               {/* Glow Effect Behind Image */}
@@ -312,24 +344,25 @@ const HeroSection = () => {
                   transform: "translate(-50%, -50%)",
                   width: "120%",
                   height: "120%",
-                  background: "radial-gradient(circle, rgba(0, 188, 212, 0.2) 0%, transparent 70%)",
+                  background:
+                    "radial-gradient(circle, rgba(25, 118, 210, 0.1) 0%, transparent 70%)",
                   borderRadius: "50%",
                   zIndex: -1,
                 }}
-              />             
+              />
               <Box
                 component="img"
                 src={cleanerImage}
                 alt="Gleamoura Cleaner"
-                sx={{ 
-                  width: "100%", 
+                sx={{
+                  width: "100%",
                   maxWidth: 450,
-                  filter: "drop-shadow(0 20px 40px rgba(0, 188, 212, 0.3))",
+                  filter: "drop-shadow(0 20px 40px rgba(25, 118, 210, 0.2))",
                   position: "relative",
                   zIndex: 2,
                 }}
               />
-              
+
               {/* Floating Elements */}
               {[
                 { top: "10%", left: "10%", delay: 0 },
@@ -340,10 +373,10 @@ const HeroSection = () => {
                 <motion.div
                   key={index}
                   initial={{ scale: 0, opacity: 0 }}
-                  animate={{ 
-                    scale: [0, 1, 1, 0], 
+                  animate={{
+                    scale: [0, 1, 1, 0],
                     opacity: [0, 0.6, 0.6, 0],
-                    y: [0, -20, 0]
+                    y: [0, -20, 0],
                   }}
                   transition={{
                     duration: 3,
@@ -355,7 +388,7 @@ const HeroSection = () => {
                     position: "absolute",
                     width: 12,
                     height: 12,
-                    background: index % 2 === 0 ? "#00BCD4" : "#B388FF",
+                    background: index % 2 === 0 ? "#1976d2" : "#7b1fa2",
                     borderRadius: "50%",
                     ...pos,
                   }}
