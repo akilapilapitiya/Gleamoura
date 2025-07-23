@@ -38,17 +38,6 @@ const reviews = [
     category: "University Student",
     timeAgo: "1 month ago",
   },
-  {
-    name: "Dr. Nishantha Silva",
-    role: "Medical Professional",
-    location: "Kandy, Sri Lanka",
-    comment: "As a healthcare professional, I can confidently say this device meets medical standards. Perfect for sanitizing equipment and surfaces quickly.",
-    rating: 5,
-    avatar: maleIcon,
-    verified: true,
-    category: "Healthcare",
-    timeAgo: "3 weeks ago",
-  },
 ];
 
 const Reviews = () => {
