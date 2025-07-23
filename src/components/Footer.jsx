@@ -432,7 +432,7 @@ const Footer = () => {
                 fontStyle: "italic",
               }}
             >
-              🛡️ Trusted by thousands • 🌍 Shipping island-wide • ⚡ 24/7 Support
+               Trusted by thousands •  Shipping island-wide •  24/7 Support
             </Typography>
           </Box>
         </motion.div>
