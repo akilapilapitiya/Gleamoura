@@ -31,15 +31,15 @@ cd gleamoura-website
 npm install
 # or
 yarn install
-\`\`\`
+```
 
 ### Running Locally
 
-\`\`\`bash
+```bash
 npm start
 # or
 yarn start
-\`\`\`
+```
 ---
 
 ## Build
