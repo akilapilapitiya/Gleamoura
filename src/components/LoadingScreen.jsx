@@ -1,59 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Typography,
-  LinearProgress,
   Chip,
   Container,
 } from "@mui/material";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const LoadingScreen = ({ onLoadingComplete }) => {
-  const [progress, setProgress] = useState(0);
-  const [currentStep, setCurrentStep] = useState(0);
-  
-  const loadingSteps = [
-    "Initializing Gleamoura System...",
-    "Loading UV Technology...",
-    "Calibrating Sensors...",
-    "Preparing Interface...",
-    "Almost Ready..."
-  ];
-
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          clearInterval(timer);
-          setTimeout(() => {
-            onLoadingComplete && onLoadingComplete();
-          }, 500);
-          return 100;
-        }
-        return prevProgress + 2;
-      });
-    }, 50);
+    const timer = setTimeout(() => {
+      onLoadingComplete && onLoadingComplete();
+    }, 1500); // Quick 1.5 second loading
 
     return () => {
-      clearInterval(timer);
+      clearTimeout(timer);
     };
   }, [onLoadingComplete]);
-
-  useEffect(() => {
-    const stepTimer = setInterval(() => {
-      setCurrentStep((prevStep) => {
-        if (prevStep >= loadingSteps.length - 1) {
-          clearInterval(stepTimer);
-          return prevStep;
-        }
-        return prevStep + 1;
-      });
-    }, 1000);
-
-    return () => {
-      clearInterval(stepTimer);
-    };
-  }, [loadingSteps.length]);
 
   return (
     <Box
@@ -218,140 +181,59 @@ const LoadingScreen = ({ onLoadingComplete }) => {
           />
         </motion.div>
 
-        {/* Loading Progress */}
+        {/* Simple Loading Dots */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <Box
-            sx={{
-              background: "rgba(255, 255, 255, 0.8)",
-              backdropFilter: "blur(20px)",
-              border: "1px solid rgba(25, 118, 210, 0.1)",
-              borderRadius: 4,
-              p: 4,
-              boxShadow: "0 8px 32px rgba(25, 118, 210, 0.1)",
-              position: "relative",
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: 4,
-                background: "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
-                borderRadius: "4px 4px 0 0",
-              },
-            }}
-          >
-            {/* Progress Bar */}
-            <Box sx={{ mb: 3 }}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
-                <Typography variant="body2" sx={{ color: "#546e7a", fontWeight: 600 }}>
-                  Loading Progress
-                </Typography>
-                <Typography variant="body2" sx={{ color: "#1976d2", fontWeight: 700 }}>
-                  {Math.round(progress)}%
-                </Typography>
-              </Box>
-              
-              <LinearProgress
-                variant="determinate"
-                value={progress}
-                sx={{
-                  height: 8,
-                  borderRadius: 4,
-                  bgcolor: "rgba(25, 118, 210, 0.1)",
-                  "& .MuiLinearProgress-bar": {
-                    background: "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
-                    borderRadius: 4,
-                  },
-                }}
-              />
-            </Box>
-
-            {/* Loading Steps */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentStep}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "#1a1a1a",
-                    fontWeight: 600,
-                    mb: 2,
-                  }}
-                >
-                  {loadingSteps[currentStep]}
-                </Typography>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Loading Dots Animation */}
-            <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
-              {[0, 1, 2].map((index) => (
-                <motion.div
-                  key={index}
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 1, 0.3],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    delay: index * 0.2,
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: 12,
-                      height: 12,
-                      borderRadius: "50%",
-                      background: "linear-gradient(135deg, #1976d2, #7b1fa2)",
-                    }}
-                  />
-                </motion.div>
-              ))}
-            </Box>
-          </Box>
-        </motion.div>
-
-        {/* Features Preview */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 4 }}>
-            {["99.9% Effective", "3-Minute Process", "Hospital Grade"].map((feature, index) => (
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 1.5, mt: 2 }}>
+            {[0, 1, 2].map((index) => (
               <motion.div
                 key={index}
                 animate={{
-                  scale: [1, 1.05, 1],
+                  scale: [1, 1.4, 1],
+                  opacity: [0.3, 1, 0.3],
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 1.2,
                   repeat: Infinity,
-                  delay: index * 0.3,
+                  delay: index * 0.2,
                 }}
               >
-                <Chip
-                  label={feature}
+                <Box
                   sx={{
-                    bgcolor: "rgba(25, 118, 210, 0.08)",
-                    color: "#1976d2",
-                    fontWeight: 600,
-                    border: "1px solid rgba(25, 118, 210, 0.2)",
-                    backdropFilter: "blur(10px)",
+                    width: 16,
+                    height: 16,
+                    borderRadius: "50%",
+                    background: "linear-gradient(135deg, #1976d2, #7b1fa2)",
+                    boxShadow: "0 4px 12px rgba(25, 118, 210, 0.4)",
                   }}
                 />
               </motion.div>
+            ))}
+          </Box>
+        </motion.div>
+
+        {/* Simple Feature Tags */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap", mt: 3 }}>
+            {["99.9% Effective", "UV Technology"].map((feature, index) => (
+              <Chip
+                key={index}
+                label={feature}
+                sx={{
+                  bgcolor: "rgba(25, 118, 210, 0.08)",
+                  color: "#1976d2",
+                  fontWeight: 600,
+                  border: "1px solid rgba(25, 118, 210, 0.2)",
+                  backdropFilter: "blur(10px)",
+                }}
+              />
             ))}
           </Box>
         </motion.div>
