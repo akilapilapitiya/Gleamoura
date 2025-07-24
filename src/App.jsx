@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="shop" element={<Shop />} />
         <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
     )
