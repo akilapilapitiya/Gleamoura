@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router";
 import {
   Box,
   Typography,
@@ -37,7 +38,9 @@ import {
   LocalOffer as LocalOfferIcon,
   FlashOn as FlashOnIcon,
   Verified as VerifiedIcon,
+  ArrowBack,
 } from '@mui/icons-material';
+import { motion } from "framer-motion";
 
 // Sample product data
 const products = [
@@ -58,7 +61,7 @@ const products = [
     stock: 15,
   },
   {
-    id: 1,
+    id: 2,
     name: "Cleaning Brush Set",
     price: 5000.00,
     originalPrice: 5000.00,
@@ -69,17 +72,16 @@ const products = [
     isOnSale: false,
     isBestseller: false,
     isNew: false,
-    description: "Professional-grade UV-C sanitization device with 99.9% germ elimination rate",
-    features: ["Hospital-grade UV-C", "3-minute cycle", "Compact design", "Safety certified"],
+    description: "Professional-grade cleaning brush set for optimal hygiene",
+    features: ["Durable bristles", "Ergonomic handle", "Multi-purpose", "Easy to clean"],
     stock: 15,
   },
-
-  
 ];
 
 const categories = ["All", "Electronics", "Home & Garden", "Audio", "Wearables"];
 
 const Store = () => {
+  const navigate = useNavigate();
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [favorites, setFavorites] = useState(new Set());
   const [cart, setCart] = useState(new Map());
@@ -88,6 +90,10 @@ const Store = () => {
   const [sortBy, setSortBy] = useState('name');
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
+
+  const handleBackToHome = () => {
+    navigate("/");
+  };
 
   // Filter and search logic
   useEffect(() => {
@@ -151,11 +157,19 @@ const Store = () => {
   };
 
   const ProductCard = ({ product }) => (
-    <div
-      style={{
-        opacity: 1,
-        transform: hoveredCard === product.id ? 'translateY(-8px)' : 'translateY(0)',
-        transition: 'all 0.3s ease',
+    <motion.div
+      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.6, 
+        type: "spring",
+        damping: 20
+      }}
+      viewport={{ once: true }}
+      whileHover={{ 
+        y: -8, 
+        scale: 1.02,
+        transition: { type: "spring", damping: 20 } 
       }}
       onMouseEnter={() => setHoveredCard(product.id)}
       onMouseLeave={() => setHoveredCard(null)}
@@ -165,16 +179,16 @@ const Store = () => {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          borderRadius: 3,
+          borderRadius: 4,
           overflow: 'hidden',
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          background: 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(25, 118, 210, 0.1)',
+          boxShadow: '0 8px 32px rgba(25, 118, 210, 0.1)',
           transition: 'all 0.3s ease',
           cursor: 'pointer',
           '&:hover': {
-            boxShadow: '0 16px 48px rgba(0, 0, 0, 0.15)',
+            boxShadow: '0 16px 48px rgba(25, 118, 210, 0.2)',
             transform: 'translateY(-4px)',
           },
         }}
@@ -249,6 +263,7 @@ const Store = () => {
               top: 12,
               right: 12,
               bgcolor: 'rgba(255, 255, 255, 0.9)',
+              backdropFilter: 'blur(10px)',
               '&:hover': {
                 bgcolor: 'rgba(255, 255, 255, 1)',
                 transform: 'scale(1.1)',
@@ -265,8 +280,8 @@ const Store = () => {
 
           {/* Quick Actions Overlay */}
           {hoveredCard === product.id && (
-            <div
-              style={{
+            <Box
+              sx={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
@@ -286,18 +301,20 @@ const Store = () => {
                   addToCart(product);
                 }}
                 sx={{
-                  bgcolor: 'rgba(255, 255, 255, 0.95)',
-                  color: '#333',
+                  background: 'linear-gradient(135deg, #1976d2, #00796b)',
+                  color: 'white',
                   fontWeight: 600,
+                  borderRadius: 3,
                   '&:hover': {
-                    bgcolor: 'white',
+                    background: 'linear-gradient(135deg, #00796b, #1976d2)',
                     transform: 'translateY(-2px)',
+                    boxShadow: '0 8px 24px rgba(25, 118, 210, 0.3)',
                   },
                 }}
               >
                 Add to Cart
               </Button>
-            </div>
+            </Box>
           )}
         </Box>
 
@@ -306,7 +323,7 @@ const Store = () => {
           <Typography
             variant="caption"
             sx={{
-              color: '#666',
+              color: '#78909c',
               textTransform: 'uppercase',
               fontWeight: 600,
               letterSpacing: 1,
@@ -340,7 +357,7 @@ const Store = () => {
           <Typography
             variant="body2"
             sx={{
-              color: '#666',
+              color: '#546e7a',
               mb: 2,
               lineHeight: 1.5,
               minHeight: '3rem',
@@ -360,9 +377,9 @@ const Store = () => {
               precision={0.1}
               size="small"
               readOnly
-              sx={{ color: '#ffc107' }}
+              sx={{ color: '#1976d2' }}
             />
-            <Typography variant="body2" sx={{ color: '#666', fontSize: '0.85rem' }}>
+            <Typography variant="body2" sx={{ color: '#78909c', fontSize: '0.85rem' }}>
               {product.rating} ({product.reviewCount})
             </Typography>
           </Stack>
@@ -377,9 +394,9 @@ const Store = () => {
                 fontSize: '1.3rem',
               }}
             >
-              Rs.{product.price}
+              Rs.{product.price.toLocaleString()}
             </Typography>
-            {product.originalPrice && (
+            {product.originalPrice && product.originalPrice !== product.price && (
               <Typography
                 variant="body2"
                 sx={{
@@ -388,7 +405,7 @@ const Store = () => {
                   fontSize: '0.9rem',
                 }}
               >
-                ${product.originalPrice}
+                Rs.{product.originalPrice.toLocaleString()}
               </Typography>
             )}
           </Stack>
@@ -415,114 +432,271 @@ const Store = () => {
           </Stack>
         </CardContent>
       </Card>
-    </div>
+    </motion.div>
   );
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#f8fafc', py: 4 }}>
-      <Container maxWidth="xl">
-        {/* Header */}
-        <div style={{ opacity: 1, transform: 'translateY(0)', transition: 'all 0.6s ease' }}>
-          <Typography
-            variant="h3"
-            align="center"
-            sx={{
-              fontWeight: 800,
-              mb: 2,
-              background: 'linear-gradient(45deg, #1976d2, #7b1fa2)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontSize: { xs: '2rem', md: '3rem' },
-            }}
-          >
-            Our Store
-          </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            sx={{
-              color: '#666',
-              mb: 6,
-              fontSize: { xs: '1rem', md: '1.2rem' },
-            }}
-          >
-            Discover premium products crafted for modern living
-          </Typography>
-        </div>
+    <Box
+      sx={{
+        position: "relative",
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #f8faff 0%, #e8f2ff 25%, #dae8ff 50%, #ffffff 100%)",
+        overflow: "hidden",
+        py: { xs: 8, md: 12 },
+      }}
+    >
+      {/* Background Effects */}
+      <Box
+        sx={{
+          position: "absolute",
+          width: 600,
+          height: 600,
+          bgcolor: "#e3f2fd",
+          filter: "blur(200px)",
+          borderRadius: "50%",
+          top: -200,
+          left: -200,
+          zIndex: 1,
+          opacity: 0.4,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          width: 400,
+          height: 400,
+          bgcolor: "#f3e5f5",
+          filter: "blur(150px)",
+          borderRadius: "50%",
+          bottom: -100,
+          right: -150,
+          zIndex: 1,
+          opacity: 0.3,
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          width: 300,
+          height: 300,
+          bgcolor: "#e0f2f1",
+          filter: "blur(120px)",
+          borderRadius: "50%",
+          top: "40%",
+          right: "15%",
+          zIndex: 1,
+          opacity: 0.25,
+        }}
+      />
 
-        {/* Filters and Search */}
-        <div style={{ opacity: 1, transform: 'translateY(0)', transition: 'all 0.6s ease 0.2s' }}>
-          <Stack
-            direction={{ xs: 'column', md: 'row' }}
-            spacing={3}
-            alignItems="center"
-            sx={{ mb: 4 }}
+      <Container maxWidth="xl" sx={{ zIndex: 2, position: "relative" }}>
+        {/* Back to Home Button */}
+        <motion.div
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <Button
+            onClick={handleBackToHome}
+            startIcon={<ArrowBack />}
+            sx={{
+              mb: 4,
+              bgcolor: "rgba(255, 255, 255, 0.9)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(25, 118, 210, 0.2)",
+              color: "#1976d2",
+              fontWeight: 600,
+              px: 3,
+              py: 1.5,
+              borderRadius: 3,
+              boxShadow: "0 4px 16px rgba(25, 118, 210, 0.15)",
+              "&:hover": {
+                bgcolor: "rgba(25, 118, 210, 0.05)",
+                transform: "translateY(-2px)",
+                boxShadow: "0 6px 20px rgba(25, 118, 210, 0.2)",
+              },
+              transition: "all 0.3s ease",
+            }}
           >
-            {/* Search */}
-            <TextField
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
+            Back to Homepage
+          </Button>
+        </motion.div>
+
+        {/* Header */}
+        <motion.div
+          initial={{ y: -30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <Box sx={{ textAlign: "center", mb: 8 }}>
+            <Chip
+              label="Premium Products Collection"
               sx={{
-                flex: 1,
-                '& .MuiOutlinedInput-root': {
-                  borderRadius: 3,
-                  bgcolor: 'white',
-                },
+                mb: 3,
+                bgcolor: "rgba(25, 118, 210, 0.08)",
+                color: "#1976d2",
+                border: "1px solid rgba(25, 118, 210, 0.2)",
+                fontWeight: 600,
+                fontSize: "0.9rem",
+                backdropFilter: "blur(10px)",
               }}
             />
-
-            {/* Category Filter */}
-            <FormControl sx={{ minWidth: 150 }}>
-              <InputLabel>Category</InputLabel>
-              <Select
-                value={selectedCategory}
-                label="Category"
-                onChange={(e) => setSelectedCategory(e.target.value)}
+            
+            <Typography
+              variant="h2"
+              component="h2"
+              fontWeight={800}
+              gutterBottom
+              sx={{
+                fontSize: { xs: "2.5rem", md: "3.5rem" },
+                lineHeight: 1.1,
+                color: "#1a1a1a",
+                mb: 2,
+              }}
+            >
+              Our{" "}
+              <Box
+                component="span"
                 sx={{
-                  borderRadius: 3,
-                  bgcolor: 'white',
+                  background: "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  position: "relative",
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    bottom: -8,
+                    left: 0,
+                    right: 0,
+                    height: 4,
+                    background: "linear-gradient(90deg, #1976d2, #7b1fa2, #00796b)",
+                    borderRadius: 2,
+                  },
                 }}
               >
-                {categories.map((category) => (
-                  <MenuItem key={category} value={category}>
-                    {category}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                Store
+              </Box>
+            </Typography>
 
-            {/* Sort */}
-            <FormControl sx={{ minWidth: 150 }}>
-              <InputLabel>Sort By</InputLabel>
-              <Select
-                value={sortBy}
-                label="Sort By"
-                onChange={(e) => setSortBy(e.target.value)}
-                sx={{
-                  borderRadius: 3,
-                  bgcolor: 'white',
+            <Typography
+              variant="h6"
+              sx={{
+                color: "#546e7a",
+                mb: 6,
+                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                maxWidth: 600,
+                mx: "auto",
+              }}
+            >
+              Discover premium products crafted for modern living
+            </Typography>
+          </Box>
+        </motion.div>
+
+        {/* Filters and Search */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Card
+            elevation={0}
+            sx={{
+              mb: 6,
+              borderRadius: 4,
+              background: "rgba(255, 255, 255, 0.8)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(25, 118, 210, 0.1)",
+              p: 4,
+              boxShadow: "0 8px 32px rgba(25, 118, 210, 0.1)",
+            }}
+          >
+            <Stack
+              direction={{ xs: 'column', md: 'row' }}
+              spacing={3}
+              alignItems="center"
+            >
+              {/* Search */}
+              <TextField
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon sx={{ color: '#1976d2' }} />
+                    </InputAdornment>
+                  ),
                 }}
-              >
-                <MenuItem value="name">Name</MenuItem>
-                <MenuItem value="price-low">Price: Low to High</MenuItem>
-                <MenuItem value="price-high">Price: High to Low</MenuItem>
-                <MenuItem value="rating">Rating</MenuItem>
-              </Select>
-            </FormControl>
-          </Stack>
-        </div>
+                sx={{
+                  flex: 1,
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 3,
+                    bgcolor: 'rgba(255, 255, 255, 0.7)',
+                    '&:hover': {
+                      bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    },
+                    '&.Mui-focused': {
+                      bgcolor: 'white',
+                    },
+                  },
+                }}
+              />
+
+              {/* Category Filter */}
+              <FormControl sx={{ minWidth: 150 }}>
+                <InputLabel>Category</InputLabel>
+                <Select
+                  value={selectedCategory}
+                  label="Category"
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  sx={{
+                    borderRadius: 3,
+                    bgcolor: 'rgba(255, 255, 255, 0.7)',
+                    '&:hover': {
+                      bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    },
+                  }}
+                >
+                  {categories.map((category) => (
+                    <MenuItem key={category} value={category}>
+                      {category}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+
+              {/* Sort */}
+              <FormControl sx={{ minWidth: 150 }}>
+                <InputLabel>Sort By</InputLabel>
+                <Select
+                  value={sortBy}
+                  label="Sort By"
+                  onChange={(e) => setSortBy(e.target.value)}
+                  sx={{
+                    borderRadius: 3,
+                    bgcolor: 'rgba(255, 255, 255, 0.7)',
+                    '&:hover': {
+                      bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    },
+                  }}
+                >
+                  <MenuItem value="name">Name</MenuItem>
+                  <MenuItem value="price-low">Price: Low to High</MenuItem>
+                  <MenuItem value="price-high">Price: High to Low</MenuItem>
+                  <MenuItem value="rating">Rating</MenuItem>
+                </Select>
+              </FormControl>
+            </Stack>
+          </Card>
+        </motion.div>
 
         {/* Products Grid */}
-        <Grid container spacing={4}>
-          {filteredProducts.map((product) => (
+        <Grid container spacing={4} sx={{ mb: 6 }}>
+          {filteredProducts.map((product, index) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
               <ProductCard product={product} />
             </Grid>
@@ -531,14 +705,32 @@ const Store = () => {
 
         {/* No Results */}
         {filteredProducts.length === 0 && (
-          <div style={{ opacity: 1, textAlign: 'center', padding: '4rem 0' }}>
-            <Typography variant="h5" sx={{ color: '#666', mb: 2 }}>
-              No products found
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#999' }}>
-              Try adjusting your search or filter criteria
-            </Typography>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Card
+              elevation={0}
+              sx={{
+                borderRadius: 4,
+                background: "rgba(255, 255, 255, 0.8)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(25, 118, 210, 0.1)",
+                p: 6,
+                textAlign: 'center',
+                boxShadow: "0 8px 32px rgba(25, 118, 210, 0.1)",
+              }}
+            >
+              <Typography variant="h5" sx={{ color: '#546e7a', mb: 2 }}>
+                No products found
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#78909c' }}>
+                Try adjusting your search or filter criteria
+              </Typography>
+            </Card>
+          </motion.div>
         )}
       </Container>
 
@@ -549,10 +741,12 @@ const Store = () => {
           position: 'fixed',
           bottom: 24,
           right: 24,
-          bgcolor: '#1976d2',
+          background: 'linear-gradient(135deg, #1976d2, #00796b)',
+          boxShadow: '0 8px 24px rgba(25, 118, 210, 0.3)',
           '&:hover': {
-            bgcolor: '#1565c0',
+            background: 'linear-gradient(135deg, #00796b, #1976d2)',
             transform: 'scale(1.1)',
+            boxShadow: '0 12px 32px rgba(25, 118, 210, 0.4)',
           },
           transition: 'all 0.3s ease',
         }}
