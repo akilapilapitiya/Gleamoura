@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Typography, Button, Stack, Container, Chip } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, Button, Stack, Container, Chip, Dialog, DialogContent, IconButton } from "@mui/material";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import {
@@ -8,17 +8,29 @@ import {
   AutoAwesome,
   Shield,
   Speed,
+  Close,
+  Info,
+  ContactMail,
 } from "@mui/icons-material";
 import cleanerImage from "../assets/device-mockup.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const [demoOpen, setDemoOpen] = useState(false);
 
   const features = [
     { icon: <AutoAwesome />, text: "Easy Operations" },
     { icon: <Shield />, text: "High Efficiency" },
     { icon: <Speed />, text: "3-Min Process" },
   ];
+
+  const handleDemoOpen = () => {
+    setDemoOpen(true);
+  };
+
+  const handleDemoClose = () => {
+    setDemoOpen(false);
+  };
 
   return (
     <Box
@@ -230,7 +242,7 @@ const HeroSection = () => {
               <Stack
                 direction={{ xs: "column", sm: "row" }}
                 spacing={3}
-                sx={{ alignItems: { xs: "stretch", sm: "center" } }}
+                sx={{ alignItems: { xs: "stretch", sm: "center" }, mb: 3 }}
               >
                 <motion.div
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -270,6 +282,7 @@ const HeroSection = () => {
                     variant="outlined"
                     size="large"
                     startIcon={<PlayArrow />}
+                    onClick={handleDemoOpen}
                     sx={{
                       borderColor: "rgba(25, 118, 210, 0.4)",
                       color: "#1976d2",
@@ -290,6 +303,77 @@ const HeroSection = () => {
                     }}
                   >
                     Watch Demo
+                  </Button>
+                </motion.div>
+              </Stack>
+
+              {/* Navigation Buttons */}
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
+                spacing={3}
+                sx={{ alignItems: { xs: "stretch", sm: "center" } }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    startIcon={<Info />}
+                    onClick={() => navigate("/about")}
+                    sx={{
+                      borderColor: "rgba(123, 31, 162, 0.4)",
+                      color: "#7b1fa2",
+                      py: 1.5,
+                      px: 4,
+                      fontSize: "1.1rem",
+                      fontWeight: 600,
+                      borderRadius: 3,
+                      textTransform: "none",
+                      background: "rgba(255, 255, 255, 0.6)",
+                      backdropFilter: "blur(10px)",
+                      "&:hover": {
+                        borderColor: "#7b1fa2",
+                        background: "rgba(123, 31, 162, 0.08)",
+                        color: "#6a1b9a",
+                        boxShadow: "0 8px 24px rgba(123, 31, 162, 0.15)",
+                      },
+                    }}
+                  >
+                    About Us
+                  </Button>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    startIcon={<ContactMail />}
+                    onClick={() => navigate("/contact")}
+                    sx={{
+                      borderColor: "rgba(0, 121, 107, 0.4)",
+                      color: "#00796b",
+                      py: 1.5,
+                      px: 4,
+                      fontSize: "1.1rem",
+                      fontWeight: 600,
+                      borderRadius: 3,
+                      textTransform: "none",
+                      background: "rgba(255, 255, 255, 0.6)",
+                      backdropFilter: "blur(10px)",
+                      "&:hover": {
+                        borderColor: "#00796b",
+                        background: "rgba(0, 121, 107, 0.08)",
+                        color: "#00695c",
+                        boxShadow: "0 8px 24px rgba(0, 121, 107, 0.15)",
+                      },
+                    }}
+                  >
+                    Contact
                   </Button>
                 </motion.div>
               </Stack>
@@ -398,6 +482,65 @@ const HeroSection = () => {
           </Box>
         </Stack>
       </Container>
+
+      {/* Demo Video Dialog */}
+      <Dialog
+        open={demoOpen}
+        onClose={handleDemoClose}
+        maxWidth="md"
+        fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: 4,
+            background: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(20px)",
+          },
+        }}
+      >
+        <DialogContent sx={{ p: 0, position: "relative" }}>
+          <IconButton
+            onClick={handleDemoClose}
+            sx={{
+              position: "absolute",
+              top: 8,
+              right: 8,
+              zIndex: 10,
+              bgcolor: "rgba(0, 0, 0, 0.5)",
+              color: "white",
+              "&:hover": {
+                bgcolor: "rgba(0, 0, 0, 0.7)",
+              },
+            }}
+          >
+            <Close />
+          </IconButton>
+          <Box
+            sx={{
+              position: "relative",
+              paddingBottom: "56.25%", // 16:9 aspect ratio
+              height: 0,
+              overflow: "hidden",
+            }}
+          >
+            <Box
+              component="iframe"
+              src="https://www.youtube.com/embed/qu71MdZFv6k?si=FhQUtLGR8ooxQBO2"
+              title="Gleamoura Demo Video"
+              sx={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+                borderRadius: "0 0 16px 16px",
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </Box>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 };
