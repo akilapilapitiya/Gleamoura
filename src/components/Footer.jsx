@@ -29,7 +29,7 @@ const Footer = () => {
     { icon: <Email />, href: "mailto:gleamoura360@gmail.com", color: "#1976d2" },
   ];
 
-  const navLinks = ["Home", "Shop", "About", "Contact"];
+  const navLinks = ["Shop", "About", "Contact"];
 
   return (
     <Box
