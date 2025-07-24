@@ -1,4 +1,3 @@
-Web
 # Gleamoura Web
 
 Welcome to the **Gleamoura Web** — the online home for Gleamoura, the cutting-edge cleaning tool exhibited at **INCO 2025**.
