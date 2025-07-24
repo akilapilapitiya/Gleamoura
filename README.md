@@ -1,12 +1,71 @@
-# React + Vite
+Web
+# Gleamoura Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Gleamoura Web** — the online home for Gleamoura, the cutting-edge cleaning tool exhibited at **INCO 2025**.
 
-Currently, two official plugins are available:
+This project is built with **React** and **Material UI** to provide a modern, responsive, and visually engaging user experience that highlights the innovative features and benefits of Gleamoura.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Responsive design optimized for desktop and mobile  
+- Built with React for dynamic and fast UI rendering  
+- Styled with Material UI components for a sleek and consistent look  
+- Interactive sections showcasing Gleamoura’s technology and exhibits  
+- Easy to update and extend for future enhancements  
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher recommended)  
+- npm or yarn package manager  
+
+### Installation
+
+\`\`\`bash
+git clone https://github.com/your-username/gleamoura-website.git
+cd gleamoura-website
+npm install
+# or
+yarn install
+\`\`\`
+
+### Running Locally
+
+\`\`\`bash
+npm start
+# or
+yarn start
+\`\`\`
+---
+
+## Build
+
+To create a production build:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+The optimized build will be in the `build/` folder, ready for deployment.
+
+---
+
+## Technologies Used
+
+- [React](https://reactjs.org/)  
+- [Material UI](https://mui.com/)  
+- [React Router](https://reactrouter.com/)
+
+---
+[Turning Ideas into Solutions](https://github.com/akilapilapitiya)
+---
+
+Made with ❤️ by Akila Pilapitiya
+
