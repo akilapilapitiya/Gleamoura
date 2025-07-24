@@ -88,7 +88,7 @@ const Video = () => {
           >
             <Box
               component="iframe"
-              src="https://www.youtube.com/embed/kuQpk37dH5g?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1"
+              src="https://www.youtube.com/embed/qu71MdZFv6k?si=3fYO5V0oIbhBc--c?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1"
               title="Demo Video"
               allow="autoplay; encrypted-media"
               allowFullScreen
