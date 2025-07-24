@@ -25,8 +25,8 @@ This project is built with **React** and **Material UI** to provide a modern, re
 
 ### Installation
 
-\`\`\`bash
-git clone https://github.com/your-username/gleamoura-website.git
+```bash
+git clone [https://github.com/your-username/gleamoura-website.git](https://github.com/akilapilapitiya/Gleamoura)
 cd gleamoura-website
 npm install
 # or
