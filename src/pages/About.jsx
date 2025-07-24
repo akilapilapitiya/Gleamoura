@@ -22,6 +22,7 @@ import {
   ArrowBack,
 } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import Footer from "../components/Footer";
 
 const values = [
   {
@@ -73,7 +74,8 @@ const About = () => {
   };
 
   return (
-    <Box
+    <div className="container">
+        <Box
       sx={{
         position: "relative",
         background: "linear-gradient(135deg, #f8faff 0%, #e8f2ff 25%, #dae8ff 50%, #ffffff 100%)",
@@ -609,6 +611,9 @@ const About = () => {
         </motion.div>
       </Container>
     </Box>
+    <Footer />
+    </div>
+    
   );
 };
 

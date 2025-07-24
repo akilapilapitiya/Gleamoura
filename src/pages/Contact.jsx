@@ -26,6 +26,7 @@ import {
   YouTube,
 } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import Footer from "../components/Footer";
 
 const contactInfo = [
   {
@@ -102,7 +103,8 @@ const Contact = () => {
   };
 
   return (
-    <Box
+    <div className="container">
+        <Box
       sx={{
         position: "relative",
         background: "linear-gradient(135deg, #f8faff 0%, #e8f2ff 25%, #dae8ff 50%, #ffffff 100%)",
@@ -652,6 +654,8 @@ const Contact = () => {
         </Grid>
       </Container>
     </Box>
+    <Footer />
+    </div>
   );
 };
 
