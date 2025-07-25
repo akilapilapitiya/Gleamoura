@@ -5,6 +5,13 @@ Welcome to the **Gleamoura Web** — the online home for Gleamoura, the cutting-
 This project is built with **React** and **Material UI** to provide a modern, responsive, and visually engaging user experience that highlights the innovative features and benefits of Gleamoura.
 
 ---
+## Screenshots
+<img src="https://raw.githubusercontent.com/akilapilapitiya/Gleamoura/main/screenshots/home.png" width="100%" alt="Homepage">
+<img src="https://raw.githubusercontent.com/akilapilapitiya/Gleamoura/main/screenshots/steps.png" width="100%" alt="Steps Page">
+<img src="https://raw.githubusercontent.com/akilapilapitiya/Gleamoura/main/screenshots/video.png" width="100%" alt="Video Page">
+
+
+---
 
 ## Features
 
