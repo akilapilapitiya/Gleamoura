@@ -6,9 +6,9 @@ This project is built with **React** and **Material UI** to provide a modern, re
 
 ---
 ## Screenshots
-<img src="https://raw.githubusercontent.com/akilapilapitiya/Gleamoura/main/screenshots/home.png" width="100%" alt="Homepage">
-<img src="https://raw.githubusercontent.com/akilapilapitiya/Gleamoura/main/screenshots/steps.png" width="100%" alt="Steps Page">
-<img src="https://raw.githubusercontent.com/akilapilapitiya/Gleamoura/main/screenshots/video.png" width="100%" alt="Video Page">
+<img src="screenshots/home.png" width="100%" alt="Homepage">
+<img src="screenshots/steps.png" width="100%" alt="Steps Page">
+<img src="screenshots/video.png" width="100%" alt="Video Page">
 
 
 ---
