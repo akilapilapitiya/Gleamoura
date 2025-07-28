@@ -41,40 +41,59 @@ import {
   ArrowBack,
 } from '@mui/icons-material';
 import { motion } from "framer-motion";
+import product from '../assets/product.jpg'
+import brush from '../assets/brush.jpg'
+import liquid from '../assets/liquid.jpg'
 
 // Sample product data
 const products = [
   {
     id: 1,
-    name: "Gleamoura Table Cleaner (Full Pack)",
-    price: 12000.00,
-    originalPrice: 15000.00,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
+    name: "Gleamoura 360 Multi-Function Cleaner",
+    price: 8000.00,
+    originalPrice: 9750.00,
+    image: product,
     category: "Electronics",
-    rating: 4.8,
-    reviewCount: 324,
+    rating: 5.0,
+    reviewCount: 10,
     isOnSale: true,
     isBestseller: true,
-    isNew: false,
+    isNew: true,
     description: "Professional-grade UV-C sanitization device with 99.9% germ elimination rate",
     features: ["Hospital-grade UV-C", "3-minute cycle", "Compact design", "Safety certified"],
     stock: 15,
   },
   {
     id: 2,
-    name: "Cleaning Brush Set",
-    price: 5000.00,
-    originalPrice: 5000.00,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
-    category: "Electronics",
-    rating: 5.0,
-    reviewCount: 20,
+    name: "Nylon Super absorbent Brush",
+    price: 100.00,
+    originalPrice: 100.00,
+    image: brush,
+    category: "Cleaning Utility",
+    rating: 1.0,
+    reviewCount: 1,
     isOnSale: false,
     isBestseller: false,
     isNew: false,
-    description: "Professional-grade cleaning brush set for optimal hygiene",
-    features: ["Durable bristles", "Ergonomic handle", "Multi-purpose", "Easy to clean"],
-    stock: 15,
+    description: "Professional-grade super absorbent brush for effective cleaning",
+    features: ["Ultra-absorbent fibers", "Ergonomic design", "Machine washable", "Durable"],
+    stock: 43,
+  },
+  {
+    id: 3,
+    name: "Cleaning Agent",
+    price: 900.00,
+    originalPrice: 900.00,
+    image: liquid,
+    category: "Cleaning Utility",
+    rating: 2.0,
+    reviewCount: 15,
+    isOnSale: false,
+    isBestseller: false,
+    isNew: false,
+    description: "Professional-grade cleaning agent for effective cleaning",
+    features: ["Ultra-absorbent fibers", "Ergonomic design", "Machine washable", "Durable"],
+    stock: 43,
   },
 ];
 
@@ -595,7 +614,7 @@ const Store = () => {
           </Box>
         </motion.div>
 
-        {/* Filters and Search */}
+        Filters and Search
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
