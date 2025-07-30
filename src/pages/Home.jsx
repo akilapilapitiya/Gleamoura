@@ -10,7 +10,7 @@ const Home = () => {
     <div>
         <HeroSection />
 
-        <Reviews />
+        {/* <Reviews /> */}
         <Steps />
         <Video />
         <Footer />

@@ -50,7 +50,7 @@ const products = [
   {
     id: 1,
     name: "Gleamoura 360 Multi-Function Cleaner",
-    price: 8000.00,
+    price: 9250.00,
     originalPrice: 9750.00,
     image: product,
     category: "Electronics",
